@@ -1,0 +1,1349 @@
+[
+  {
+    "id": "1cb59f76-5bb7-4c53-a2ca-acf4cc25e516",
+    "goal": "plan a tour of 5 day to udupi and add it in google calender and google sheets",
+    "workflow_graph": {
+      "workflow_name": "plan_a_tour_of_5_day_to_udupi_and_add_it_in_google",
+      "nodes": [
+        {
+          "id": "parse_request",
+          "label": "Parse User Request",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "research_attractions",
+          "label": "Research Udupi Attractions",
+          "component_id": "web_search"
+        },
+        {
+          "id": "create_itinerary",
+          "label": "Create 5-Day Itinerary",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "format_calendar",
+          "label": "Format for Google Calendar",
+          "component_id": "format_data"
+        },
+        {
+          "id": "format_sheets",
+          "label": "Format for Google Sheets",
+          "component_id": "format_data"
+        },
+        {
+          "id": "create_calendar_events",
+          "label": "Create Calendar Events",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "create_sheet_entries",
+          "label": "Create Sheet Entries",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "send_confirmation",
+          "label": "Send Confirmation",
+          "component_id": "gmail_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "parse_request",
+          "target": "research_attractions"
+        },
+        {
+          "source": "research_attractions",
+          "target": "create_itinerary"
+        },
+        {
+          "source": "create_itinerary",
+          "target": "format_calendar"
+        },
+        {
+          "source": "create_itinerary",
+          "target": "format_sheets"
+        },
+        {
+          "source": "format_calendar",
+          "target": "create_calendar_events"
+        },
+        {
+          "source": "format_sheets",
+          "target": "create_sheet_entries"
+        },
+        {
+          "source": "create_calendar_events",
+          "target": "send_confirmation"
+        },
+        {
+          "source": "create_sheet_entries",
+          "target": "send_confirmation"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN",
+      "TAVILY_API_KEY"
+    ],
+    "created_at": "2026-05-16T02:27:16.985158"
+  },
+  {
+    "id": "8d60ee6e-1bcb-4197-8bf8-a2d2ede204bd",
+    "goal": "create a list of top 5 swimming in india in google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_list_of_top_5_swimming_in_india_in_google",
+      "nodes": [
+        {
+          "id": "send_msg",
+          "label": "Send WhatsApp Message",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": []
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER"
+    ],
+    "created_at": "2026-05-16T02:35:39.193220"
+  },
+  {
+    "id": "7d1281fe-ff90-40fb-9f0a-d26bc5e6a74f",
+    "goal": "plan a trip for gokarna for 5 day and schedule an google meet tomorrow morning 8am also on google calender mail it to bhushanvs06@gmail.com",
+    "workflow_graph": {
+      "workflow_name": "plan_a_trip_for_gokarna_for_5_day_and_schedule_an_",
+      "nodes": [
+        {
+          "id": "parse_trip_details",
+          "label": "Parse Trip and Meeting Details",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "plan_gokarna_trip",
+          "label": "Plan 5-Day Gokarna Itinerary",
+          "component_id": "goal_planner"
+        },
+        {
+          "id": "create_google_meet",
+          "label": "Create Google Meet Link",
+          "component_id": "google_meet_creator"
+        },
+        {
+          "id": "add_to_calendar",
+          "label": "Add Event to Google Calendar",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "send_email_invite",
+          "label": "Send Email Invite",
+          "component_id": "gmail_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "parse_trip_details",
+          "target": "plan_gokarna_trip"
+        },
+        {
+          "source": "plan_gokarna_trip",
+          "target": "create_google_meet"
+        },
+        {
+          "source": "create_google_meet",
+          "target": "add_to_calendar"
+        },
+        {
+          "source": "add_to_calendar",
+          "target": "send_email_invite"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T02:38:10.138732"
+  },
+  {
+    "id": "f027ae28-22de-49c7-b4df-b4cd017eaaca",
+    "goal": "create a 10 students student database",
+    "workflow_graph": {
+      "workflow_name": "create_a_10_students_student_database",
+      "nodes": [
+        {
+          "id": "gen_student_data",
+          "label": "Generate Student Data",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "fmt_sheet_data",
+          "label": "Format for Google Sheets",
+          "component_id": "format_data"
+        },
+        {
+          "id": "write_to_sheet",
+          "label": "Write to Google Sheets",
+          "component_id": "google_sheets"
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_student_data",
+          "target": "fmt_sheet_data"
+        },
+        {
+          "source": "fmt_sheet_data",
+          "target": "write_to_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T03:04:49.537119"
+  },
+  {
+    "id": "9709d7a4-1a55-4350-8624-82328388f9e7",
+    "goal": "plan me a date for one day on google sheet with time and place",
+    "workflow_graph": {
+      "workflow_name": "plan_me_a_date_for_one_day_on_google_sheet_with_ti",
+      "nodes": [
+        {
+          "id": "gen_date_plan",
+          "label": "Generate Date Plan",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "fmt_date_data",
+          "label": "Format Date Data",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send Date via WhatsApp",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_date_plan",
+          "target": "fmt_date_data"
+        },
+        {
+          "source": "fmt_date_data",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER"
+    ],
+    "created_at": "2026-05-16T03:13:41.629096"
+  },
+  {
+    "id": "0ec24706-0eae-4a03-87f8-b7ae792573b7",
+    "goal": "create a time table on google sheets",
+    "workflow_graph": {
+      "workflow_name": "create_a_time_table_on_google_sheets",
+      "nodes": [
+        {
+          "id": "plan_timetable",
+          "label": "Generate Time Table Plan",
+          "component_id": "goal_planner"
+        },
+        {
+          "id": "format_sheet_data",
+          "label": "Format Data for Sheets",
+          "component_id": "format_data"
+        },
+        {
+          "id": "write_to_sheets",
+          "label": "Write Time Table to Google Sheets",
+          "component_id": "google_sheets"
+        }
+      ],
+      "edges": [
+        {
+          "source": "plan_timetable",
+          "target": "format_sheet_data"
+        },
+        {
+          "source": "format_sheet_data",
+          "target": "write_to_sheets"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T03:15:32.537165"
+  },
+  {
+    "id": "b27dc377-df6c-467d-9d72-7c8da6cf582b",
+    "goal": "Create a weekly class timetable for a college student and put it in Google Sheets",
+    "workflow_graph": {
+      "workflow_name": "create_a_weekly_class_timetable_for_a_college_stud",
+      "nodes": [
+        {
+          "id": "gen_timetable_text",
+          "label": "Generate Weekly Timetable Text",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "format_timetable_data",
+          "label": "Format Data for Google Sheets",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "write_to_google_sheets",
+          "label": "Write Timetable to Google Sheets",
+          "component_id": "google_sheets"
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_timetable_text",
+          "target": "format_timetable_data"
+        },
+        {
+          "source": "format_timetable_data",
+          "target": "write_to_google_sheets"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T03:22:51.305647"
+  },
+  {
+    "id": "d93c9676-2c35-4267-a135-8e75267bafc1",
+    "goal": "send happy birthday on whatsapp an take dob from the person and save it on google sheet",
+    "workflow_graph": {
+      "workflow_name": "send_happy_birthday_on_whatsapp_an_take_dob_from_t",
+      "nodes": [
+        {
+          "id": "step_whatsapp_sender",
+          "label": "Whatsapp Sender",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "step_whatsapp_trigger",
+          "label": "Whatsapp Trigger",
+          "component_id": "whatsapp_trigger"
+        },
+        {
+          "id": "step_google_sheets",
+          "label": "Google Sheets",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "step_gemini_llm",
+          "label": "Gemini Llm",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "step_reminder_scheduler",
+          "label": "Reminder Scheduler",
+          "component_id": "reminder_scheduler"
+        }
+      ],
+      "edges": [
+        {
+          "source": "step_whatsapp_sender",
+          "target": "step_whatsapp_trigger"
+        },
+        {
+          "source": "step_whatsapp_trigger",
+          "target": "step_google_sheets"
+        },
+        {
+          "source": "step_google_sheets",
+          "target": "step_gemini_llm"
+        },
+        {
+          "source": "step_gemini_llm",
+          "target": "step_reminder_scheduler"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T03:26:43.242307"
+  },
+  {
+    "id": "dea98007-06db-4125-8892-6094e8c64e2f",
+    "goal": "create a list of top 5 youtubers in india in google sheet and send on whatsapp",
+    "workflow_graph": {
+      "workflow_name": "create_a_list_of_top_5_youtubers_in_india_in_googl",
+      "nodes": [
+        {
+          "id": "get_raw_data",
+          "label": "Get Top 5 Indian YouTubers Data",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "format_for_sheets",
+          "label": "Format Data for Google Sheets",
+          "component_id": "format_data"
+        },
+        {
+          "id": "write_to_sheets",
+          "label": "Write to Google Sheets",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "format_for_whatsapp",
+          "label": "Format Data for WhatsApp",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send WhatsApp Message",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "get_raw_data",
+          "target": "format_for_sheets"
+        },
+        {
+          "source": "format_for_sheets",
+          "target": "write_to_sheets"
+        },
+        {
+          "source": "format_for_sheets",
+          "target": "format_for_whatsapp"
+        },
+        {
+          "source": "format_for_whatsapp",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T03:42:22.680586"
+  },
+  {
+    "id": "38a52acd-f8bf-4ccc-a137-9a003094be83",
+    "goal": "create a study planner on whatsapp and add that on google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_study_planner_on_whatsapp_and_add_that_on",
+      "nodes": [
+        {
+          "id": "gen_planner",
+          "label": "Generate Study Planner",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "send_wa",
+          "label": "Send Planner via WhatsApp",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "store_sheet",
+          "label": "Store Planner in Google Sheets",
+          "component_id": "google_sheets"
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_planner",
+          "target": "send_wa"
+        },
+        {
+          "source": "gen_planner",
+          "target": "store_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T04:07:37.744272"
+  },
+  {
+    "id": "71fec050-415e-46fe-aead-414f9f334625",
+    "goal": "build a chatbot in whatsapp",
+    "workflow_graph": {
+      "workflow_name": "build_a_chatbot_in_whatsapp",
+      "nodes": [
+        {
+          "id": "trigger",
+          "label": "WhatsApp Inbound Trigger",
+          "component_id": "whatsapp_trigger"
+        },
+        {
+          "id": "llm",
+          "label": "Gemini LLM",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "sender",
+          "label": "WhatsApp Message Sender",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "trigger",
+          "target": "llm"
+        },
+        {
+          "source": "llm",
+          "target": "sender"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "TAVILY_API_KEY"
+    ],
+    "created_at": "2026-05-16T04:38:25.492525"
+  },
+  {
+    "id": "5630207c-86f4-4c18-94a6-6194d476ab2f",
+    "goal": "generate a jee road map for 1 month to check it also mail me that also on whatsapp, and schedule a google meet today at 5am and send the link on whatsapp",
+    "workflow_graph": {
+      "workflow_name": "generate_a_jee_road_map_for_1_month_to_check_it_al",
+      "nodes": [
+        {
+          "id": "gen_roadmap",
+          "label": "Generate JEE Roadmap",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "fmt_roadmap",
+          "label": "Format Roadmap for WhatsApp",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_roadmap_wa",
+          "label": "Send Roadmap via WhatsApp",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "schedule_meet",
+          "label": "Schedule Google Meet",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "fmt_link_msg",
+          "label": "Format Meet Link Message",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_link_wa",
+          "label": "Send Meet Link via WhatsApp",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_roadmap",
+          "target": "fmt_roadmap"
+        },
+        {
+          "source": "fmt_roadmap",
+          "target": "send_roadmap_wa"
+        },
+        {
+          "source": "schedule_meet",
+          "target": "fmt_link_msg"
+        },
+        {
+          "source": "fmt_link_msg",
+          "target": "send_link_wa"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER"
+    ],
+    "created_at": "2026-05-16T04:50:17.468840"
+  },
+  {
+    "id": "9e8d5fb4-02c7-4548-877c-67a04067c627",
+    "goal": "make a study schedule for upse to clear in 100 days add all dates on calender and send on whatsapp, and set up a google meet today at 5am",
+    "workflow_graph": {
+      "workflow_name": "make_a_study_schedule_for_upse_to_clear_in_100_day",
+      "nodes": [
+        {
+          "id": "plan_study",
+          "label": "Create UPSC Study Plan",
+          "component_id": "goal_planner"
+        },
+        {
+          "id": "fmt_plan",
+          "label": "Format Plan for WhatsApp",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_wa",
+          "label": "Send Schedule via WhatsApp",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "add_dates",
+          "label": "Add Study Dates to Calendar",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "create_meet",
+          "label": "Create Google Meet for Today 5AM",
+          "component_id": "google_meet_creator"
+        }
+      ],
+      "edges": [
+        {
+          "source": "plan_study",
+          "target": "fmt_plan"
+        },
+        {
+          "source": "fmt_plan",
+          "target": "send_wa"
+        },
+        {
+          "source": "plan_study",
+          "target": "add_dates"
+        },
+        {
+          "source": "plan_study",
+          "target": "create_meet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T04:59:23.171884"
+  },
+  {
+    "id": "25d300e6-b019-4555-846d-3ed1f498b88a",
+    "goal": "create a google meet at 7 and send the link to my whatsapp, and a summary of jee imp topics",
+    "workflow_graph": {
+      "workflow_name": "create_a_google_meet_at_7_and_send_the_link_to_my_",
+      "nodes": [
+        {
+          "id": "create_meet",
+          "label": "Create Google Meet",
+          "component_id": "google_meet_creator"
+        },
+        {
+          "id": "generate_jee_summary",
+          "label": "Generate JEE Topics Summary",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send WhatsApp Message",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "create_meet",
+          "target": "send_whatsapp"
+        },
+        {
+          "source": "generate_jee_summary",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN",
+      "TAVILY_API_KEY"
+    ],
+    "created_at": "2026-05-16T06:11:23.794516"
+  },
+  {
+    "id": "af831fd1-bbf3-4665-af67-26c701ed9b07",
+    "goal": "create a google meet on google calender and share the link on whatsapp",
+    "workflow_graph": {
+      "workflow_name": "create_a_google_meet_on_google_calender_and_share_",
+      "nodes": [
+        {
+          "id": "create_calendar_event",
+          "label": "Create Google Calendar Event",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "send_link_via_whatsapp",
+          "label": "Send Link via WhatsApp",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "create_calendar_event",
+          "target": "send_link_via_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T06:18:44.702981"
+  },
+  {
+    "id": "2aeff35d-4276-42f1-b7b0-41ad8fce4b83",
+    "goal": "set a google meet today at 2pm and send it on whatsapp and add in google sheeet, also add in google calender",
+    "workflow_graph": {
+      "workflow_name": "set_a_google_meet_today_at_2pm_and_send_it_on_what",
+      "nodes": [
+        {
+          "id": "extract_goal_details",
+          "label": "Extract Details",
+          "component_id": "extract_details"
+        },
+        {
+          "id": "create_meet_link",
+          "label": "Create Google Meet",
+          "component_id": "google_meet_creator"
+        },
+        {
+          "id": "create_calendar_event",
+          "label": "Create Calendar Event",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "add_to_sheet",
+          "label": "Add to Google Sheets",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "send_whatsapp_invite",
+          "label": "Send WhatsApp Invite",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "extract_goal_details",
+          "target": "create_meet_link"
+        },
+        {
+          "source": "create_meet_link",
+          "target": "send_whatsapp_invite"
+        },
+        {
+          "source": "extract_goal_details",
+          "target": "create_calendar_event"
+        },
+        {
+          "source": "extract_goal_details",
+          "target": "add_to_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T06:27:07.734655"
+  },
+  {
+    "id": "b542eb6e-220c-489d-a128-f2d19e50ddea",
+    "goal": "Schedule a Google Meet tomorrow at 2pm and add it to Google Sheets also on whatsapp",
+    "workflow_graph": {
+      "workflow_name": "schedule_a_google_meet_tomorrow_at_2pm_and_add_it_",
+      "nodes": [
+        {
+          "id": "extract_goal",
+          "label": "Extract Details",
+          "component_id": "extract_details"
+        },
+        {
+          "id": "create_meet",
+          "label": "Create Google Meet",
+          "component_id": "google_meet_creator"
+        },
+        {
+          "id": "format_message",
+          "label": "Format WhatsApp Message",
+          "component_id": "format_data"
+        },
+        {
+          "id": "write_to_sheet",
+          "label": "Write to Google Sheet",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send WhatsApp",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "extract_goal",
+          "target": "create_meet"
+        },
+        {
+          "source": "create_meet",
+          "target": "format_message"
+        },
+        {
+          "source": "create_meet",
+          "target": "write_to_sheet"
+        },
+        {
+          "source": "format_message",
+          "target": "send_whatsapp"
+        },
+        {
+          "source": "write_to_sheet",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T06:49:12.726885"
+  },
+  {
+    "id": "64bf7795-419d-4d35-b543-3bd8f82fd479",
+    "goal": "create an google meet and well researched planner for jee in 2 months mail it to bhushanvs06@gmail.com, and add timetable on whatsapp and google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_an_google_meet_and_well_researched_planner_",
+      "nodes": [
+        {
+          "id": "step_web_search",
+          "label": "Web Search",
+          "component_id": "web_search"
+        },
+        {
+          "id": "step_gemini_llm",
+          "label": "Gemini Llm",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "step_goal_planner",
+          "label": "Goal Planner",
+          "component_id": "goal_planner"
+        },
+        {
+          "id": "step_google_docs",
+          "label": "Google Docs",
+          "component_id": "google_docs"
+        },
+        {
+          "id": "step_google_calendar",
+          "label": "Google Calendar",
+          "component_id": "google_calendar"
+        },
+        {
+          "id": "step_google_meet_creator",
+          "label": "Google Meet Creator",
+          "component_id": "google_meet_creator"
+        },
+        {
+          "id": "step_gmail_sender",
+          "label": "Gmail Sender",
+          "component_id": "gmail_sender"
+        },
+        {
+          "id": "step_google_sheets",
+          "label": "Google Sheets",
+          "component_id": "google_sheets"
+        },
+        {
+          "id": "step_whatsapp_sender",
+          "label": "Whatsapp Sender",
+          "component_id": "whatsapp_sender"
+        }
+      ],
+      "edges": [
+        {
+          "source": "step_web_search",
+          "target": "step_gemini_llm"
+        },
+        {
+          "source": "step_gemini_llm",
+          "target": "step_goal_planner"
+        },
+        {
+          "source": "step_goal_planner",
+          "target": "step_google_docs"
+        },
+        {
+          "source": "step_google_docs",
+          "target": "step_google_calendar"
+        },
+        {
+          "source": "step_google_calendar",
+          "target": "step_google_meet_creator"
+        },
+        {
+          "source": "step_google_meet_creator",
+          "target": "step_gmail_sender"
+        },
+        {
+          "source": "step_gmail_sender",
+          "target": "step_google_sheets"
+        },
+        {
+          "source": "step_google_sheets",
+          "target": "step_whatsapp_sender"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN",
+      "TAVILY_API_KEY"
+    ],
+    "created_at": "2026-05-16T06:54:09.326373"
+  },
+  {
+    "id": "cf761e1f-b788-4817-962a-41078e8aef8a",
+    "goal": "create a timtable for me and send on whatsapp and google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_timtable_for_me_and_send_on_whatsapp_and_",
+      "nodes": [
+        {
+          "id": "parse",
+          "label": "Extract Timetable Details",
+          "component_id": "extract_details"
+        },
+        {
+          "id": "gen_timetable",
+          "label": "Generate Timetable",
+          "component_id": "gemini_llm"
+        },
+        {
+          "id": "fmt_wa",
+          "label": "Format for WhatsApp",
+          "component_id": "format_data"
+        },
+        {
+          "id": "send_wa",
+          "label": "Send Timetable via WhatsApp",
+          "component_id": "whatsapp_sender"
+        },
+        {
+          "id": "fmt_sheet",
+          "label": "Format for Google Sheets",
+          "component_id": "format_data"
+        },
+        {
+          "id": "write_sheet",
+          "label": "Write Timetable to Google Sheet",
+          "component_id": "google_sheets"
+        }
+      ],
+      "edges": [
+        {
+          "source": "parse",
+          "target": "gen_timetable"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_wa"
+        },
+        {
+          "source": "fmt_wa",
+          "target": "send_wa"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_sheet"
+        },
+        {
+          "source": "fmt_sheet",
+          "target": "write_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T07:17:14.220940"
+  },
+  {
+    "id": "e90426bc-1ad8-4221-8740-0494e28ac3fb",
+    "goal": "create a timtable for me and send on whatsapp and google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_timtable_for_me_and_send_on_whatsapp_and_",
+      "nodes": [
+        {
+          "id": "parse",
+          "label": "Extract Timetable Details",
+          "component_id": "extract_details",
+          "_x": 60,
+          "_y": 240
+        },
+        {
+          "id": "gen_timetable",
+          "label": "Generate Timetable",
+          "component_id": "gemini_llm",
+          "_x": 320,
+          "_y": 240
+        },
+        {
+          "id": "fmt_wa",
+          "label": "Format for WhatsApp",
+          "component_id": "format_data",
+          "_x": 580,
+          "_y": 180
+        },
+        {
+          "id": "send_wa",
+          "label": "Send Timetable via WhatsApp",
+          "component_id": "whatsapp_sender",
+          "_x": 840,
+          "_y": 180
+        },
+        {
+          "id": "fmt_sheet",
+          "label": "Format for Google Sheets",
+          "component_id": "format_data",
+          "_x": 580,
+          "_y": 300
+        },
+        {
+          "id": "write_sheet",
+          "label": "Write Timetable to Google Sheet",
+          "component_id": "google_sheets",
+          "_x": 840,
+          "_y": 300
+        }
+      ],
+      "edges": [
+        {
+          "source": "parse",
+          "target": "gen_timetable"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_wa"
+        },
+        {
+          "source": "fmt_wa",
+          "target": "send_wa"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_sheet"
+        },
+        {
+          "source": "fmt_sheet",
+          "target": "write_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T08:15:08.728256"
+  },
+  {
+    "id": "d688ae62-7c4c-47fc-82ea-d6f091bc88b9",
+    "goal": "create a timtable for me and send on whatsapp and google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_timtable_for_me_and_send_on_whatsapp_and_",
+      "nodes": [
+        {
+          "id": "parse",
+          "label": "Extract Timetable Details",
+          "component_id": "extract_details",
+          "_x": 60,
+          "_y": 240
+        },
+        {
+          "id": "gen_timetable",
+          "label": "Generate Timetable",
+          "component_id": "gemini_llm",
+          "_x": 320,
+          "_y": 240
+        },
+        {
+          "id": "fmt_wa",
+          "label": "Format for WhatsApp",
+          "component_id": "format_data",
+          "_x": 580,
+          "_y": 180
+        },
+        {
+          "id": "send_wa",
+          "label": "Send Timetable via WhatsApp",
+          "component_id": "whatsapp_sender",
+          "_x": 840,
+          "_y": 180
+        },
+        {
+          "id": "fmt_sheet",
+          "label": "Format for Google Sheets",
+          "component_id": "format_data",
+          "_x": 580,
+          "_y": 300
+        },
+        {
+          "id": "write_sheet",
+          "label": "Write Timetable to Google Sheet",
+          "component_id": "google_sheets",
+          "_x": 840,
+          "_y": 300
+        }
+      ],
+      "edges": [
+        {
+          "source": "parse",
+          "target": "gen_timetable"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_wa"
+        },
+        {
+          "source": "fmt_wa",
+          "target": "send_wa"
+        },
+        {
+          "source": "gen_timetable",
+          "target": "fmt_sheet"
+        },
+        {
+          "source": "fmt_sheet",
+          "target": "write_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER",
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN"
+    ],
+    "created_at": "2026-05-16T08:18:27.173648"
+  },
+  {
+    "id": "4a2f025c-ead0-43a0-9386-b9807deb0d5b",
+    "goal": "send list of 5 youtubers on my whatsapp",
+    "workflow_graph": {
+      "workflow_name": "send_list_of_5_youtubers_on_my_whatsapp",
+      "nodes": [
+        {
+          "id": "gen_youtubers",
+          "label": "Generate List of 5 YouTubers",
+          "component_id": "gemini_llm",
+          "_x": 60,
+          "_y": 240
+        },
+        {
+          "id": "fmt_whatsapp_msg",
+          "label": "Format WhatsApp Message",
+          "component_id": "format_data",
+          "_x": 320,
+          "_y": 240
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send WhatsApp Message",
+          "component_id": "whatsapp_sender",
+          "_x": 580,
+          "_y": 240
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_youtubers",
+          "target": "fmt_whatsapp_msg"
+        },
+        {
+          "source": "fmt_whatsapp_msg",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER"
+    ],
+    "created_at": "2026-05-16T08:20:14.821949"
+  },
+  {
+    "id": "d2fb3e54-c50a-463f-be55-3b0e926a5887",
+    "goal": "send list of 5 youtubers on my whatsapp",
+    "workflow_graph": {
+      "workflow_name": "send_list_of_5_youtubers_on_my_whatsapp",
+      "nodes": [
+        {
+          "id": "gen_youtubers",
+          "label": "Generate List of 5 YouTubers",
+          "component_id": "gemini_llm",
+          "_x": 60,
+          "_y": 240
+        },
+        {
+          "id": "fmt_whatsapp_msg",
+          "label": "Format WhatsApp Message",
+          "component_id": "format_data",
+          "_x": 320,
+          "_y": 240
+        },
+        {
+          "id": "send_whatsapp",
+          "label": "Send WhatsApp Message",
+          "component_id": "whatsapp_sender",
+          "_x": 580,
+          "_y": 240
+        }
+      ],
+      "edges": [
+        {
+          "source": "gen_youtubers",
+          "target": "fmt_whatsapp_msg"
+        },
+        {
+          "source": "fmt_whatsapp_msg",
+          "target": "send_whatsapp"
+        }
+      ]
+    },
+    "required_credentials": [
+      "TWILIO_ACCOUNT_SID",
+      "TWILIO_AUTH_TOKEN",
+      "TWILIO_WHATSAPP_NUMBER"
+    ],
+    "created_at": "2026-05-16T08:23:15.019882"
+  },
+  {
+    "id": "d34c4c8b-3c38-4972-8809-b45d3be819e0",
+    "goal": "create a list of top 5 youtubers in india in google sheet",
+    "workflow_graph": {
+      "workflow_name": "create_a_list_of_top_5_youtubers_in_india_in_googl",
+      "nodes": [
+        {
+          "id": "search_youtubers",
+          "label": "Search Top Indian YouTubers",
+          "component_id": "web_search",
+          "_x": 60,
+          "_y": 240
+        },
+        {
+          "id": "format_youtuber_list",
+          "label": "Format YouTuber Data",
+          "component_id": "format_data",
+          "_x": 320,
+          "_y": 240
+        },
+        {
+          "id": "write_to_sheet",
+          "label": "Write to Google Sheet",
+          "component_id": "google_sheets",
+          "_x": 580,
+          "_y": 240
+        }
+      ],
+      "edges": [
+        {
+          "source": "search_youtubers",
+          "target": "format_youtuber_list"
+        },
+        {
+          "source": "format_youtuber_list",
+          "target": "write_to_sheet"
+        }
+      ]
+    },
+    "required_credentials": [
+      "GEMINI_API_KEY",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CLIENT_SECRET",
+      "GOOGLE_REFRESH_TOKEN",
+      "TAVILY_API_KEY"
+    ],
+    "created_at": "2026-05-16T08:24:54.540947"
+  }
+]
